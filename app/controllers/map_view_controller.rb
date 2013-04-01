@@ -13,7 +13,6 @@ class MapViewController < UIViewController
     self.view.setShowsUserLocation(true)
     self.view.setRegion(region)
 
-    puts self.view.userLocation.coordinate.inspect
     Toilet::All.each { |toilet| self.view.addAnnotation(toilet) }
   end
 
