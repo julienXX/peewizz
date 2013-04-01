@@ -11,12 +11,19 @@ class ToiletDetailsController < UIViewController
   end
 
   def showDetailsForToilet(toilet)
-    @label = UILabel.new
-    @label.font = UIFont.systemFontOfSize(14)
-    @label.text = toilet.label
-    @label.textAlignment = UITextAlignmentCenter
-    @label.textColor = UIColor.whiteColor
-    @label.backgroundColor = UIColor.clearColor
+    @address = UILabel.new
+    @address.font = UIFont.systemFontOfSize(14)
+    @address.text = toilet.address
+    @address.textAlignment = UITextAlignmentCenter
+    @address.textColor = UIColor.whiteColor
+    @address.backgroundColor = UIColor.clearColor
+
+    @model = UILabel.new
+    @model.font = UIFont.systemFontOfSize(14)
+    @model.text = toilet.label
+    @model.textAlignment = UITextAlignmentCenter
+    @model.textColor = UIColor.whiteColor
+    @model.backgroundColor = UIColor.clearColor
 
     @type = UILabel.new
     @type.font = UIFont.systemFontOfSize(14)
@@ -31,9 +38,10 @@ class ToiletDetailsController < UIViewController
 
     Motion::Layout.new do |layout|
       layout.view view
-      layout.subviews "label" => @label, "type" => @type, "action" => @action
-      layout.metrics "top" => 20, "margin" => 20, "marginButton" => 80, "height" => 40
-      layout.vertical "|-top-[label(==height)]-margin-[type(==height)]-margin-[action(==height)]"
+      layout.subviews "address" => @address, "label" => @model, "type" => @type, "action" => @action
+      layout.metrics "top" => 10, "margin" => 5, "marginButton" => 80, "height" => 40
+      layout.vertical "|-top-[address(==height)]-margin-[label(==height)]-margin-[type(==height)]-margin-[action(==height)]"
+      layout.horizontal "|-margin-[address]-margin-|"
       layout.horizontal "|-margin-[label]-margin-|"
       layout.horizontal "|-margin-[type]-margin-|"
       layout.horizontal "|-marginButton-[action]-marginButton-|"

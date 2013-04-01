@@ -13,7 +13,7 @@ class MapViewController < UIViewController
     self.view.setShowsUserLocation(true)
     self.view.setRegion(region)
 
-    Toilet::All.each { |toilet| self.view.addAnnotation(toilet) }
+    Toilet::ALL.each { |toilet| self.view.addAnnotation(toilet) }
   end
 
   ViewIdentifier = 'ViewIdentifier'
@@ -29,7 +29,7 @@ class MapViewController < UIViewController
     else
       view = MKPinAnnotationView.alloc.initWithAnnotation(toilet, reuseIdentifier:ViewIdentifier)
       view.canShowCallout = true
-      view.animatesDrop = true
+      view.animatesDrop = false
       view.pinColor = MKPinAnnotationColorGreen if toilet.is_suitable_for_handicap?
       button = UIButton.buttonWithType(UIButtonTypeDetailDisclosure)
       button.addTarget(self, action: :'showDetails:', forControlEvents:UIControlEventTouchUpInside)
