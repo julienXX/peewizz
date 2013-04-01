@@ -20,7 +20,7 @@ class ToiletDetailsController < UIViewController
 
     @type = UILabel.new
     @type.font = UIFont.systemFontOfSize(14)
-    @type.text = toilet.type == 'WCH2' ? 'Accès handicapé' : "Pas d'accès handicapé"
+    @type.text = toilet.is_suitable_for_handicap? ? 'Accès handicapé' : "Pas d'accès handicapé"
     @type.textAlignment = UITextAlignmentCenter
     @type.textColor = UIColor.whiteColor
     @type.backgroundColor = UIColor.clearColor

@@ -14,6 +14,10 @@ class Toilet
   def type; @type; end
   def title; @label; end
 
+  def is_suitable_for_handicap?
+    ['WCH','WCH2'].include? type
+  end
+
   All = [
     Toilet.new(48.841712, 2.322878, 'WCG', 'Sanisette grand modèle'),
     Toilet.new(48.883022, 2.381404,	'WCH2',	'Sanisette handicapée'),

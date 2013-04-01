@@ -30,6 +30,7 @@ class MapViewController < UIViewController
       view = MKPinAnnotationView.alloc.initWithAnnotation(toilet, reuseIdentifier:ViewIdentifier)
       view.canShowCallout = true
       view.animatesDrop = true
+      view.pinColor = MKPinAnnotationColorGreen if toilet.is_suitable_for_handicap?
       button = UIButton.buttonWithType(UIButtonTypeDetailDisclosure)
       button.addTarget(self, action: :'showDetails:', forControlEvents:UIControlEventTouchUpInside)
       view.rightCalloutAccessoryView = button
