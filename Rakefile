@@ -7,10 +7,12 @@ Bundler.require
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'PeeWizz'
-  app.frameworks += ['CoreLocation', 'MapKit', 'AddressBook']
+  app.frameworks += ['CoreLocation', 'MapKit', 'AddressBook', 'QuartzCore']
   app.icons = ["Icon.png"]
 
   app.pods do
     pod 'KNSemiModalViewController'
   end
+
+  app.pixate.framework = 'vendor/PXEngine.framework'
 end

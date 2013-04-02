@@ -1,0 +1,18 @@
+#toiletDetails {
+    background-image : url(texture.png);
+    border-radius    : 10px;
+}
+#toiletDetails > label {
+    font-family: "HelveticaNeue";
+    font-wight: light;
+}
+#toiletDetails > button {
+    color            : #446620;
+    background-color : linear-gradient(#87c44a, #b4da77);
+    border-width     : 1px;
+    border-color     : #84a254;
+    border-radius    : 10px;
+    font-size        : 15px;
+    font-family      : "HelveticaNeue";
+    font-wight       : light;
+}

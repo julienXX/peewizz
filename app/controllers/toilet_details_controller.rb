@@ -6,8 +6,7 @@ class ToiletDetailsController < UIViewController
 
   def viewDidLoad
     super
-    @background = UIColor.alloc.initWithPatternImage("texture".uiimage)
-    self.view.backgroundColor = @background
+    view.styleId = 'toiletDetails'
   end
 
   def showDetailsForToilet(toilet)
@@ -35,6 +34,7 @@ class ToiletDetailsController < UIViewController
     @action = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     @action.setTitle('Fermer', forState:UIControlStateNormal)
     @action.addTarget(self, action:'closeDetails', forControlEvents:UIControlEventTouchUpInside)
+    @action.styleId = 'appButton'
 
     Motion::Layout.new do |layout|
       layout.view view
