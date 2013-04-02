@@ -9,6 +9,7 @@ Motion::Project::App.setup do |app|
   app.name = 'PeeWizz'
   app.frameworks += ['CoreLocation', 'MapKit', 'AddressBook', 'QuartzCore']
   app.icons = ["Icon.png"]
+  app.fonts = ["font.ttf"]
 
   app.pods do
     pod 'KNSemiModalViewController'

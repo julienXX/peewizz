@@ -1,17 +1,67 @@
+/* @primaryFontName: AppleGothic; */
+/* @secondaryFontName: HelveticaNeue-Light; */
+/* @secondaryFontNameBold: HelveticaNeue; */
+/* @secondaryFontNameStrong: HelveticaNeue-Medium; */
+/* @inputFontName: HelveticaNeue; */
+/* @primaryFontColor: #555555; */
+/* @secondaryFontColor: #888888; */
+/* @primaryBackgroundColor: #E6E6E6; */
+/* @primaryBackgroundTintColor: #ECECEC; */
+/* @primaryBackgroundColorTop: #F3F3F3; */
+/* @primaryBackgroundColorBottom: #E6E6E6; */
+/* @primaryBackgroundColorBottomStrong: #DDDDDD; */
+/* @secondaryBackgroundColorTop: #FCFCFC; */
+/* @secondaryBackgroundColorBottom: #F9F9F9; */
+/* @primaryBorderColor: #A2A2A2; */
+/* @primaryBorderWidth: 1; */
+
 #toiletDetails {
     background-image : url(texture.png);
-    border-radius    : 10px;
+    border-radius    : 3px;
 }
 #toiletDetails > label {
     font-family: "HelveticaNeue";
-    font-wight: light;
+    font-weight: light;
+    text-overflow: word-wrap;
+    /* size: 120px; */
 }
-#toiletDetails > button {
+#toiletDetails > #distanceLabel {
+    font-family: "Helvetica";
     color            : #446620;
     background-color : linear-gradient(#87c44a, #b4da77);
     border-width     : 1px;
     border-color     : #84a254;
-    border-radius    : 10px;
+    border-radius    : 5px;
+    font-size        : 15px;
+    font-weight      : extra-bold;
+    size: 60px;
+}
+#toiletDetails > #accessibleLabel {
+    font-family      : "Rail Model"
+    font-size        : 40px;
+    color            : #FFFFFF;
+    background-color : linear-gradient(#87c44a, #b4da77);
+    border-width     : 1px;
+    border-color     : #84a254;
+    border-radius    : 5px;
+    size: 60px;
+}
+#toiletDetails > #nonAccessibleLabel {
+    font-family      : "Rail Model"
+    font-size        : 40px;
+    color            : #FFFFFF;
+    background-color : linear-gradient(#d73318, #f7a8a8);
+    border-width     : 1px;
+    border-color     : #bc2929;
+    border-radius    : 5px;
+    size: 60px;
+}
+#toiletDetails > button {
+    color            : #555555;
+    background-color : linear-gradient(#A2A2A2, #F3F3F3);
+    border-width     : 1px;
+    border-color     : #888888;
+    border-radius    : 5px;
     font-size        : 15px;
     font-family      : "HelveticaNeue";
     font-wight       : light;
