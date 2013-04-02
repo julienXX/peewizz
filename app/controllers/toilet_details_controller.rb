@@ -14,7 +14,7 @@ class ToiletDetailsController < UIViewController
     @address.numberOfLines = 0
     @address.font = UIFont.systemFontOfSize(14)
     @address.text = toilet.address
-    @address.textAlignment = UITextAlignmentRight
+    @address.textAlignment = UITextAlignmentCenter
     @address.textColor = UIColor.whiteColor
     @address.backgroundColor = UIColor.clearColor
 
@@ -41,10 +41,10 @@ class ToiletDetailsController < UIViewController
     Motion::Layout.new do |layout|
       layout.view view
       layout.subviews "address" => @address, "distance" => @distance, "type" => @type, "action" => @action
-      layout.metrics "top" => 20, "margin" => 10, "marginLeft" => 40, "marginButton" => 80, "height" => 20, "heightButton" => 40
-      layout.vertical "|-top-[distance(==height)][address(==height)]-margin-[type(==height)]-margin-[action(==heightButton)]"
+      layout.metrics "top" => 20, "margin" => 10, "marginLeft" => 40, "marginButton" => 80, "height" => 30, "heightButton" => 40
+      layout.vertical "|-top-[address(==height)]-margin-[distance(==height)]-margin-[type(==height)]-margin-[action(==heightButton)]"
+      layout.horizontal "|-margin-[address]-margin-|"
       layout.horizontal "|-margin-[distance]-margin-|"
-      layout.horizontal "|-marginLeft-[address]-margin-|"
       layout.horizontal "|-marginLeft-[type]-margin-|"
       layout.horizontal "|-marginButton-[action]-marginButton-|"
     end
