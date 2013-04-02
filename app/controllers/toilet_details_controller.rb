@@ -9,27 +9,29 @@ class ToiletDetailsController < UIViewController
     view.styleId = 'toiletDetails'
   end
 
-  def showDetailsForToilet(toilet)
+  def showDetailsForToilet(toilet, location)
     @address = UILabel.new
+    @address.numberOfLines = 0
     @address.font = UIFont.systemFontOfSize(14)
     @address.text = toilet.address
-    @address.textAlignment = UITextAlignmentCenter
+    @address.textAlignment = UITextAlignmentRight
     @address.textColor = UIColor.whiteColor
     @address.backgroundColor = UIColor.clearColor
 
-    @model = UILabel.new
-    @model.font = UIFont.systemFontOfSize(14)
-    @model.text = toilet.label
-    @model.textAlignment = UITextAlignmentCenter
-    @model.textColor = UIColor.whiteColor
-    @model.backgroundColor = UIColor.clearColor
+    @distance = UILabel.new
+    @distance.font = UIFont.systemFontOfSize(14)
+    @distance.text = toilet.distanceFrom(location)
+    @distance.textAlignment = UITextAlignmentCenter
+    @distance.textColor = UIColor.whiteColor
+    @distance.backgroundColor = UIColor.clearColor
+    @distance.styleId = 'distanceLabel'
 
     @type = UILabel.new
-    @type.font = UIFont.systemFontOfSize(14)
-    @type.text = toilet.is_suitable_for_handicap? ? 'Accès handicapé' : "Pas d'accès handicapé"
+    @type.text = "\u267F"
     @type.textAlignment = UITextAlignmentCenter
     @type.textColor = UIColor.whiteColor
     @type.backgroundColor = UIColor.clearColor
+    @type.styleId = toilet.is_suitable_for_handicap? ? 'accessibleLabel' : 'nonAccessibleLabel'
 
     @action = UIButton.buttonWithType(UIButtonTypeRoundedRect)
     @action.setTitle('Fermer', forState:UIControlStateNormal)
@@ -38,12 +40,12 @@ class ToiletDetailsController < UIViewController
 
     Motion::Layout.new do |layout|
       layout.view view
-      layout.subviews "address" => @address, "label" => @model, "type" => @type, "action" => @action
-      layout.metrics "top" => 10, "margin" => 5, "marginButton" => 80, "height" => 40
-      layout.vertical "|-top-[address(==height)]-margin-[label(==height)]-margin-[type(==height)]-margin-[action(==height)]"
-      layout.horizontal "|-margin-[address]-margin-|"
-      layout.horizontal "|-margin-[label]-margin-|"
-      layout.horizontal "|-margin-[type]-margin-|"
+      layout.subviews "address" => @address, "distance" => @distance, "type" => @type, "action" => @action
+      layout.metrics "top" => 20, "margin" => 10, "marginLeft" => 40, "marginButton" => 80, "height" => 20, "heightButton" => 40
+      layout.vertical "|-top-[distance(==height)][address(==height)]-margin-[type(==height)]-margin-[action(==heightButton)]"
+      layout.horizontal "|-margin-[distance]-margin-|"
+      layout.horizontal "|-marginLeft-[address]-margin-|"
+      layout.horizontal "|-marginLeft-[type]-margin-|"
       layout.horizontal "|-marginButton-[action]-marginButton-|"
     end
   end

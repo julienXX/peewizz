@@ -41,8 +41,9 @@ class MapViewController < UIViewController
   def showDetails(sender)
     if view.selectedAnnotations.size == 1
       toilet = view.selectedAnnotations[0]
+      currentLocation = self.view.userLocation.coordinate
       controller = ToiletDetailsController.alloc.init
-      controller.showDetailsForToilet(toilet)
+      controller.showDetailsForToilet(toilet, currentLocation)
       self.presentSemiViewController(controller)
     end
   end

@@ -20,6 +20,16 @@ class Toilet
     ['WCH','WCH2'].include? type
   end
 
+  def distanceFrom(location)
+    pointA = location
+    pointB = coordinate
+    pointALocation = CLLocation.alloc.initWithLatitude(pointA.latitude, longitude: pointA.longitude)
+    pointBLocation = CLLocation.alloc.initWithLatitude(pointB.latitude, longitude: pointB.longitude)
+
+    @distance = pointBLocation.distanceFromLocation(pointALocation)
+    "#{@distance.round.to_s}m"
+  end
+
   ALL = [
     Toilet.new(48.841712,2.322878,"WCG","Sanisette grand modèle","29 Boulevard Edgar Quinet, 75015 Paris"),
     Toilet.new(48.883022,2.381404,"WCH2","Sanisette handicapée","7 Avenue de Laumière, 75019 Paris"),
