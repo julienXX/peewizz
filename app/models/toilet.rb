@@ -14,7 +14,7 @@ class Toilet
   def label; @label; end
   def type; @type; end
   def address; @address; end
-  def title; "Détails"; end
+  def title; address.split(',').first; end
 
   def is_suitable_for_handicap?
     ['WCH','WCH2'].include? type
