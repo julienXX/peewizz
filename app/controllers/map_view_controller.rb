@@ -2,7 +2,11 @@ class MapViewController < UIViewController
 
   def loadView
     self.view = MKMapView.alloc.init
+    UINavigationBar.appearance.setTitleTextAttributes({NSForegroundColorAttributeName: UIColor.whiteColor})
     self.title = "PeeWizz"
+    color = UIColor.colorWithRed(103/255.0, green: 134/255.0, blue: 254/255.0, alpha: 1.0)
+    UINavigationBar.appearance.setBarTintColor(color)
+
     view.delegate = self
   end
 
@@ -23,13 +27,11 @@ class MapViewController < UIViewController
   ViewIdentifier = 'ViewIdentifier'
 
   def mapView(mapView, viewForAnnotation:toilet)
+    return nil if toilet == mapView.userLocation
+
     if view = mapView.dequeueReusableAnnotationViewWithIdentifier(ViewIdentifier)
       view.annotation = toilet
-      if view.annotation.class == MKUserLocation
-        return nil;
-      else
-        view.annotation
-      end
+      view.annotation
     else
       view = MKPinAnnotationView.alloc.initWithAnnotation(toilet, reuseIdentifier:ViewIdentifier)
       view.canShowCallout = true
