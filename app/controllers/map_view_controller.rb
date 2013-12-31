@@ -2,6 +2,7 @@ class MapViewController < UIViewController
 
   def loadView
     self.view = MKMapView.alloc.init
+    self.title = "PeeWizz"
     view.delegate = self
   end
 
@@ -30,7 +31,9 @@ class MapViewController < UIViewController
       view = MKPinAnnotationView.alloc.initWithAnnotation(toilet, reuseIdentifier:ViewIdentifier)
       view.canShowCallout = true
       view.animatesDrop = false
-      view.pinColor = MKPinAnnotationColorGreen if toilet.is_suitable_for_handicap?
+      if toilet.is_a?(Toilet) && toilet.is_suitable_for_handicap?
+        view.pinColor = MKPinAnnotationColorGreen
+      end
       button = UIButton.buttonWithType(UIButtonTypeDetailDisclosure)
       button.addTarget(self, action: :'showDetails:', forControlEvents:UIControlEventTouchUpInside)
       view.rightCalloutAccessoryView = button
