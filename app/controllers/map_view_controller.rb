@@ -14,6 +14,9 @@ class MapViewController < UIViewController
     self.view.setShowsUserLocation(true)
     self.view.setRegion(region)
 
+    buttonItem = MKUserTrackingBarButtonItem.alloc.initWithMapView(self.view)
+    self.navigationItem.rightBarButtonItem = buttonItem
+
     Toilet::ALL.each { |toilet| self.view.addAnnotation(toilet) }
   end
 
