@@ -7,7 +7,7 @@ Bundler.require
 Motion::Project::App.setup do |app|
   app.name = 'PeeWizz'
   app.frameworks += ['CoreLocation', 'MapKit', 'AddressBook', 'QuartzCore', 'MessageUI']
-  app.icons = ["Icon.png"]
+  app.icons = ["Icon.png", "Icon@2x.png"]
   app.fonts = ["font.ttf"]
   app.provisioning_profile = "/Users/julien/Library/MobileDevice/Provisioning\ Profiles/2AE0D68A-3CB6-47E0-99E5-D929F0DFF0DE.mobileprovision"
 
