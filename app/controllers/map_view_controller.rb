@@ -2,10 +2,11 @@ class MapViewController < UIViewController
 
   def loadView
     self.view = MKMapView.alloc.init
-    UINavigationBar.appearance.setTitleTextAttributes({NSForegroundColorAttributeName: UIColor.whiteColor})
+    navigationBar = UINavigationBar.appearance
     self.title = "PeeWizz"
-    color = UIColor.colorWithRed(103/255.0, green: 134/255.0, blue: 254/255.0, alpha: 1.0)
-    UINavigationBar.appearance.setBarTintColor(color)
+    color = UIColor.colorWithRed(255/255.0, green: 133/255.0, blue: 0/255.0, alpha: 1.0)
+    navigationBar.setBarTintColor(color)
+    navigationBar.setTitleTextAttributes({NSForegroundColorAttributeName => UIColor.whiteColor})
 
     view.delegate = self
   end
