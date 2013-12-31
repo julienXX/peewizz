@@ -16,4 +16,7 @@ Motion::Project::App.setup do |app|
   end
 
   app.files += Dir.glob(File.join(app.project_dir, 'style/**/*.rb'))
+
+  app.info_plist["UIViewControllerBasedStatusBarAppearance"] = false
+  app.info_plist["UIStatusBarStyle"] = "UIStatusBarStyleLightContent"
 end
