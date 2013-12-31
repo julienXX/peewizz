@@ -10,10 +10,9 @@ class Toilet
     @address = address
   end
 
+  attr_reader :label, :type, :address
+
   def coordinate; @coordinate; end
-  def label; @label; end
-  def type; @type; end
-  def address; @address; end
   def title; address.split(',').first; end
 
   def is_suitable_for_handicap?
