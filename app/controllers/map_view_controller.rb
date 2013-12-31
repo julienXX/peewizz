@@ -50,9 +50,15 @@ class MapViewController < UIViewController
     if view.selectedAnnotations.size == 1
       toilet = view.selectedAnnotations[0]
       currentLocation = self.view.userLocation.coordinate
-      controller = ToiletDetailsController.alloc.init
-      controller.showDetailsForToilet(toilet, currentLocation)
-      self.presentSemiViewController(controller)
+
+      message = "Distance: #{toilet.distanceFrom(currentLocation)}\nAccessible: #{toilet.is_suitable_for_handicap?}"
+      @alert_box = UIAlertView.alloc.initWithTitle("More infos",
+                                                   message: message,
+                                                   delegate: nil,
+                                                   cancelButtonTitle: "ok",
+                                                   otherButtonTitles:nil)
+
+      @alert_box.show
     end
   end
 end
