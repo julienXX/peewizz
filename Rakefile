@@ -9,7 +9,7 @@ Motion::Project::App.setup do |app|
   app.frameworks += ['CoreLocation', 'MapKit', 'AddressBook', 'QuartzCore', 'MessageUI']
   app.icons = ["Icon.png"]
   app.fonts = ["font.ttf"]
-  app.provisioning_profile = "/Users/julien/Library/MobileDevice/Provisioning\ Profiles/5B1843F5-50F1-45EF-8C0F-579F85A60424.mobileprovision"
+  app.provisioning_profile = "/Users/julien/Library/MobileDevice/Provisioning\ Profiles/2AE0D68A-3CB6-47E0-99E5-D929F0DFF0DE.mobileprovision"
 
   app.pods do
     pod 'KNSemiModalViewController'
