@@ -14,20 +14,28 @@ class MapViewController < UIViewController
   def viewDidLoad
     view.frame = UIScreen.mainScreen.bounds
 
+    mapView = self.view
     region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(48.85896, 2.34691), MKCoordinateSpanMake(0.2, 0.2))
-    self.view.userTrackingMode = true
-    self.view.setShowsUserLocation(true)
-    self.view.setRegion(region)
+    mapView.userTrackingMode = true
+    mapView.setShowsUserLocation(true)
+    mapView.setRegion(region)
 
-    buttonItem = MKUserTrackingBarButtonItem.alloc.initWithMapView(self.view)
+    buttonItem = MKUserTrackingBarButtonItem.alloc.initWithMapView(mapView)
     self.navigationItem.rightBarButtonItem = buttonItem
 
-    Toilet::ALL.each { |toilet| self.view.addAnnotation(toilet) }
+    Toilet::ALL.each { |toilet| mapView.addAnnotation(toilet) }
   end
 
   ViewIdentifier = 'ViewIdentifier'
 
-  def mapView(mapView, viewForAnnotation:toilet)
+  def mapView(mapView, didUpdateUserLocation: userLocation)
+    mapRegion = MKCoordinateRegion.new
+    mapRegion.center = mapView.userLocation.coordinate
+    mapRegion.span = MKCoordinateSpanMake(0.02, 0.02)
+    mapView.setRegion(mapRegion, animated: true)
+  end
+
+  def mapView(mapView, viewForAnnotation: toilet)
     return nil if toilet == mapView.userLocation
 
     if view = mapView.dequeueReusableAnnotationViewWithIdentifier(ViewIdentifier)
